@@ -1,4 +1,4 @@
-package com.gerciadev.cumbu;
+package com.gerciadev.cumbu.activity;
 
 
 import  androidx.appcompat.app.AppCompatActivity;
@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.gerciadev.cumbu.R;
 import com.gerciadev.cumbu.activity.CadastroActivity;
 import com.gerciadev.cumbu.activity.LoginActivity;
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
