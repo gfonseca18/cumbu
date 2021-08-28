@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "940167346665",
+    "project_id": "cumbu-62560",
+    "storage_bucket": "cumbu-62560.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:940167346665:android:595860277133a6cd597378",
+        "android_client_info": {
+          "package_name": "com.gerciadev.cumbu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "940167346665-13cgt1e9jvfqc55mbfkdnhlp6su6u4ur.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gerciadev.cumbu",
+            "certificate_hash": "1fd3dfe4f0d617403056f16f0839072e412876b2"
+          }
+        },
+        {
+          "client_id": "940167346665-rh80ok10jofdioeudj68vo7g544akget.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4TJuG7lORZSQjSC4_7MeqQGx_VV94-dQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "940167346665-rh80ok10jofdioeudj68vo7g544akget.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
