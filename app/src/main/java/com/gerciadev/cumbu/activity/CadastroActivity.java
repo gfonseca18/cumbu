@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 import com.gerciadev.cumbu.R;
 import com.gerciadev.cumbu.config.ConfigFirebase;
+import com.gerciadev.cumbu.helper.Base64Custom;
 import com.gerciadev.cumbu.model.Utilizador;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -85,6 +87,9 @@ public class CadastroActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull  Task<AuthResult> task) {
                if (task.isSuccessful()){
+                   String idUtilizador = Base64Custom.codeBase64(utilizador.getEmail());
+                   utilizador.setIdUtilizador(idUtilizador);
+                   utilizador.salvar();
                    finish();
                }else{
                    String exececao = "";
