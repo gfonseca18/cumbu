@@ -1,5 +1,6 @@
 package com.gerciadev.cumbu.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -10,12 +11,20 @@ import android.widget.Toast;
 
 import com.gerciadev.cumbu.R;
 import com.gerciadev.cumbu.config.ConfigFirebase;
+import com.gerciadev.cumbu.model.Utilizador;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 public class CadastroActivity extends AppCompatActivity {
     private EditText campoNome,campoEmail,campoSenha;
     private Button botaoCadastrar;
     private FirebaseAuth autenticacao;
+    private Utilizador utilizador;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +49,11 @@ public class CadastroActivity extends AppCompatActivity {
              if (!textoNome.isEmpty()){
                  if (!textoEmail.isEmpty()){
                      if (!textoSenha.isEmpty()){
+                         utilizador = new Utilizador();
+                         utilizador.setNome( textoNome);
+                         utilizador.setEmail(textoEmail);
+                         utilizador.setSenha(textoSenha);
+
                          cadastrarUtilizador();
                      }else {
                          Toast.makeText(CadastroActivity.this,
@@ -65,8 +79,36 @@ public class CadastroActivity extends AppCompatActivity {
     public void cadastrarUtilizador(){
         //recuperar o objecto do firebase para autenticar o utilizador
         autenticacao = ConfigFirebase.getFirebaseAutenticacao();
-        autenticacao.createUserWithEmailAndPassword(
-                "email","senha"
-        );
+        autenticacao.createUserWithEmailAndPassword(utilizador.getEmail(),utilizador.getSenha()
+
+        ).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull  Task<AuthResult> task) {
+               if (task.isSuccessful()){
+                   Toast.makeText(CadastroActivity.this,
+                           "Sucesso ao Cadastrar o utilizador!",
+                           Toast.LENGTH_SHORT).show();
+               }else{
+                   String exececao = "";
+                   //Tratamento de execpções
+                   try {
+                       throw  task.getException();
+
+                   }catch (FirebaseAuthWeakPasswordException e){
+                       exececao = "Digite uma senha mais forte!";
+                   }catch (FirebaseAuthInvalidCredentialsException e){
+                       exececao= "Por favor,digite um e-mail válido";
+                   }catch (FirebaseAuthUserCollisionException e){
+                       exececao = "Este conta já foi cadastrada";
+                   }catch (Exception e){
+                       exececao = "Erro ao cadastrar utilizador:" +e.getMessage();
+                       e.printStackTrace();
+                   }
+                   Toast.makeText(CadastroActivity.this,
+                           exececao,
+                           Toast.LENGTH_SHORT).show();
+               }
+            }
+        });
     }
 }
