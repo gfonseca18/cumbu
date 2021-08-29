@@ -10,16 +10,19 @@ import android.view.View;
 import com.gerciadev.cumbu.R;
 import com.gerciadev.cumbu.activity.CadastroActivity;
 import com.gerciadev.cumbu.activity.LoginActivity;
+import com.gerciadev.cumbu.config.ConfigFirebase;
+import com.google.firebase.auth.FirebaseAuth;
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
 import com.heinrichreimersoftware.materialintro.slide.FragmentSlide;
 
 public class MainActivity extends IntroActivity {
-
+    private FirebaseAuth autenticacao;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_main);
 
+        verificarLogin();
         setButtonBackVisible(false);
         setButtonNextVisible(false);
 
@@ -47,6 +50,12 @@ public class MainActivity extends IntroActivity {
 
     //metodos para verificar a assinatura
 
+    @Override
+    protected void onStart(){
+        super.onStart();
+        verificarLogin();
+    }
+
     public  void  btEntrar(View view){
         //inicie a activity
         startActivity(new Intent(this, LoginActivity.class));
@@ -54,6 +63,18 @@ public class MainActivity extends IntroActivity {
     }
     public  void  btCadastrar(View view){
       startActivity(new Intent(this, CadastroActivity.class));
+    }
+
+    public void verificarLogin(){
+       autenticacao = ConfigFirebase.getFirebaseAutenticacao();
+       autenticacao.signOut();
+       if (autenticacao.getCurrentUser() != null){
+        abrirTelaPrincipal();
+       }
+    }
+    public  void abrirTelaPrincipal(){
+        startActivity(new Intent(this,PrincipalActivity.class));
+
     }
 
 }
