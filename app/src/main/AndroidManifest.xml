@@ -10,8 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cumbu"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.ReceitasActivity" android:theme="@style/receitaTheme"></activity>
-        <activity android:name=".activity.DespesasActivity" android:theme="@style/despesaTheme"/>
+        <activity android:name=".activity.DespesasActivity"></activity>
+        <activity
+            android:name=".activity.ReceitasActivity"
+            android:theme="@style/receitaTheme" />
         <activity
             android:name=".activity.PrincipalActivity"
             android:label="@string/title_activity_principal"

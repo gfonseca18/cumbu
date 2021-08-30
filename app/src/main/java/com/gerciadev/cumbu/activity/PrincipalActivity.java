@@ -3,6 +3,7 @@ package com.gerciadev.cumbu.activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.gerciadev.cumbu.databinding.ActivityPrincipalBinding;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,7 +22,7 @@ import com.gerciadev.cumbu.R;
 public class PrincipalActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
-    //private ActivityPrincipalBinding binding;
+    private ActivityPrincipalBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

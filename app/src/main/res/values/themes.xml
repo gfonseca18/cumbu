@@ -16,7 +16,7 @@
     <style name="Theme.Cumbu.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Cumbu.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-   <!-- Tema aplicado nas despesas !-->
+    <!-- Tema aplicado nas despesas !-->
     <style name="despesaTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -24,6 +24,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDarkDespesa</item>
         <item name="colorAccent">@color/colorAccentDespesa</item>
     </style>
+
     <style name="receitaTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
