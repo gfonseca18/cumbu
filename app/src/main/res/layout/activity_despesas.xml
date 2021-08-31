@@ -96,6 +96,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
         app:srcCompat="@drawable/ic_check_24"
-        android:onClick="salvarDespesa"/>
+        android:onClick="salvarReceita"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

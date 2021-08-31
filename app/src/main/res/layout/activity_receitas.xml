@@ -43,6 +43,7 @@
         app:layout_constraintVertical_chainStyle="packed">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ex:Data" />
@@ -58,6 +59,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editCategoria"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ex:Salario" />
@@ -74,6 +76,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editDescricao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
