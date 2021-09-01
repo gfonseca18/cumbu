@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cumbu"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.DespesasActivity"></activity>
+        <activity android:name=".adapter.AdapterMovimentacao"></activity>
+        <activity android:name=".activity.DespesasActivity" />
         <activity
             android:name=".activity.ReceitasActivity"
             android:theme="@style/receitaTheme" />

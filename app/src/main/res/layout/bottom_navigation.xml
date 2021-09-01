@@ -1,0 +1,11 @@
+<com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx android:id="@+id/bnve"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:background="@color/colorPrimary"
+    app:itemIconTint="@color/colorAccent"
+    app:itemTextColor="@color/colorPrimary"
+    app:menu="@menu/menu_bottom_navigation"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android" />
+
