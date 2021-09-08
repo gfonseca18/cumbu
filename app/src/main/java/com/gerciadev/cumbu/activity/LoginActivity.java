@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -19,6 +20,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.heinrichreimersoftware.materialintro.app.IntroActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -30,6 +32,8 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
         campoEmail = findViewById(R.id.editmail);
@@ -97,6 +101,9 @@ public class LoginActivity extends AppCompatActivity {
     public void abrirTelaPrincipal(){
         startActivity(new Intent(this,PrincipalActivity.class));
         finish();
+    }
+    public void callHome(View view){
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
     }
 
 }

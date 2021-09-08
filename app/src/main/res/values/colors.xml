@@ -22,4 +22,19 @@
     <color name="colorPrimaryReceita">#00D39E</color>
     <color name="colorPrimaryDarkReceita">#00BE8B</color>
     <color name="colorAccentReceita">#00D39E</color>
+
+    <!--Cores Menu !-->
+    <color name="colorPrimaryWallet">#00D39E</color>
+    <color name="colorPrimaryCoins">#2e25d9</color>
+    <color name="colorAccentGraph">#2e25d9</color>
+    <color name="colorAccentTools">#ffc4dd</color>
+
+
+    <color name="blue">#2e25d9</color>
+    <color name="pink">#ffc4dd</color>
+
+
+
+
+
 </resources>

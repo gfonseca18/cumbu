@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:color="@color/colorPrimaryWallet"
+    android:state_checked="true"/>
+    <item
+        android:color="@color/colorAccentGraph"
+        android:state_checked="true"/>
+    <item
+        android:color="@color/colorAccentTools"
+        android:state_checked="true"/>
+    <item
+        android:color="@color/colorPrimaryCoins"
+        android:state_checked="true"/>
+
+
+</selector>

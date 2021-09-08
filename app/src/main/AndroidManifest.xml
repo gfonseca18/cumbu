@@ -10,7 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cumbu"
         android:usesCleartextTraffic="true">
-        <activity android:name=".adapter.AdapterMovimentacao"></activity>
+        <activity android:name=".IntroActivity"></activity>
+        <activity android:name=".activity.BudgetActivity" />
+        <activity android:name=".adapter.AdapterMovimentacao" />
         <activity android:name=".activity.DespesasActivity" />
         <activity
             android:name=".activity.ReceitasActivity"
@@ -30,6 +32,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

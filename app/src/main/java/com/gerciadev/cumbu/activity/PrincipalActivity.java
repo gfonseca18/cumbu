@@ -1,7 +1,10 @@
 package com.gerciadev.cumbu.activity;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.gerciadev.cumbu.adapter.AdapterMovimentacao;
@@ -12,7 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Pair;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -73,6 +78,8 @@ public class PrincipalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         /*Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Organizze");
         setSupportActionBar(toolbar);*/
@@ -310,4 +317,5 @@ public class PrincipalActivity extends AppCompatActivity {
         utilizadorRef.removeEventListener( valueEventListenerUtilizador );
         movimentacaoRef.removeEventListener( valueEventListenerMovimentacoes );
     }
+
 }

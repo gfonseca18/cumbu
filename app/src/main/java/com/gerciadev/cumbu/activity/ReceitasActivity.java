@@ -44,7 +44,7 @@ public class ReceitasActivity extends AppCompatActivity {
         campoData.setText(DateCustom.dataAtual());
         recuperarReceitaTotal();
     }
-    public void salvarReceita(View view){
+      public void salvarReceita(View view){
         //Salvar Despesas
         if (validarCamposReceita()){
 

@@ -54,7 +54,7 @@
 
 
 
-
+<include layout="@layout/bottom_navigation" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
