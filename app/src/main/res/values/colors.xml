@@ -7,6 +7,16 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="blue">#2e25d9</color>
+    <color name="pink">#ffc4dd</color>
+
+
+    <color name="dark_blue"> #1E1F20</color>
+    <color name="green"> #52CFC5</color>
+    <color name="purple">#5b3db7</color>
+    <color name="dark_pink">#c6419e</color>
+    <color name="yellow"> #e5a818</color>
+
 
 
     <color name="colorPrimary">#01c7d2</color>
@@ -30,8 +40,7 @@
     <color name="colorAccentTools">#ffc4dd</color>
 
 
-    <color name="blue">#2e25d9</color>
-    <color name="pink">#ffc4dd</color>
+
 
 
 

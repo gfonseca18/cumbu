@@ -1,6 +1,5 @@
 package com.gerciadev.cumbu.activity;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -9,11 +8,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.gerciadev.cumbu.R;
-import com.gerciadev.cumbu.config.ConfigFirebase;
+import com.gerciadev.cumbu.config.ConfiguracaoFirebase;
 import com.gerciadev.cumbu.helper.Base64Custom;
 import com.gerciadev.cumbu.helper.DateCustom;
 import com.gerciadev.cumbu.model.Movimentacao;
-import com.gerciadev.cumbu.model.Utilizador;
+import com.gerciadev.cumbu.model.Usuario;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -21,16 +20,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
-import org.jetbrains.annotations.NotNull;
-
 public class ReceitasActivity extends AppCompatActivity {
-    private TextInputEditText campoData,campoCategoria,campoDescricao;
+    private TextInputEditText campoData, campoCategoria, campoDescricao;
     private EditText campoValor;
     private Movimentacao movimentacao;
-    private DatabaseReference firebaseRef = ConfigFirebase.getFirebaseDatabase();
-    private FirebaseAuth autenticacao = ConfigFirebase.getFirebaseAutenticacao();
-    private Double despesaTotal;
-    private  Double despesaGerada;
+    private DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebaseDatabase();
+    private FirebaseAuth autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
+    private Double receitaTotal;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,29 +37,35 @@ public class ReceitasActivity extends AppCompatActivity {
         campoData = findViewById(R.id.editData);
         campoCategoria = findViewById(R.id.editCategoria);
         campoDescricao = findViewById(R.id.editDescricao);
-        //preenche com a data atual
-        campoData.setText(DateCustom.dataAtual());
+
+        //Preenche o campo data com a date atual
+        campoData.setText( DateCustom.dataAtual() );
         recuperarReceitaTotal();
+
     }
-      public void salvarReceita(View view){
-        //Salvar Despesas
-        if (validarCamposReceita()){
+
+    public void salvarReceita(View view){
+
+        if ( validarCamposReceita() ){
 
             movimentacao = new Movimentacao();
             String data = campoData.getText().toString();
             Double valorRecuperado = Double.parseDouble(campoValor.getText().toString());
-            movimentacao.setValor( valorRecuperado);
-            movimentacao.setCategoria(campoCategoria.getText().toString());
-            movimentacao.setDescricao(campoDescricao.getText().toString());
-            movimentacao.setData(data);
-            movimentacao.setTipo("d");
 
+            movimentacao.setValor( valorRecuperado );
+            movimentacao.setCategoria( campoCategoria.getText().toString() );
+            movimentacao.setDescricao( campoDescricao.getText().toString() );
+            movimentacao.setData( data );
+            movimentacao.setTipo( "r" );
 
-            Double ReceitaAtualizada = despesaTotal + valorRecuperado;
-            atualizarReceita( ReceitaAtualizada);
-            movimentacao.salvar(data);
+            Double receitaAtualizada = receitaTotal + valorRecuperado;
+            atualizarReceita( receitaAtualizada );
+
+            movimentacao.salvar( data );
+
+            finish();
+
         }
-
 
 
     }
@@ -73,7 +76,7 @@ public class ReceitasActivity extends AppCompatActivity {
         String textoData = campoData.getText().toString();
         String textoCategoria = campoCategoria.getText().toString();
         String textoDescricao = campoDescricao.getText().toString();
-        //validar se os campos foram preenchidos para gravar na base de dados
+
         if ( !textoValor.isEmpty() ){
             if ( !textoData.isEmpty() ){
                 if ( !textoCategoria.isEmpty() ){
@@ -107,33 +110,34 @@ public class ReceitasActivity extends AppCompatActivity {
 
     }
 
-
     public void recuperarReceitaTotal(){
-        String emailUtilizador = autenticacao.getCurrentUser().getEmail();
-        String idUtilizador = Base64Custom.codeBase64( emailUtilizador);
-        DatabaseReference utilizadorRef = firebaseRef.child("utilizadores").child(idUtilizador);
 
+        String emailUsuario = autenticacao.getCurrentUser().getEmail();
+        String idUsuario = Base64Custom.codificarBase64( emailUsuario );
+        DatabaseReference usuarioRef = firebaseRef.child("usuarios").child( idUsuario );
 
-        utilizadorRef.addValueEventListener(new ValueEventListener() {
+        usuarioRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                //retorna o objecto utilizador do firebase
-                Utilizador utilizador = snapshot.getValue(Utilizador.class);
-                //recuperar uma despesa total
-                despesaTotal = utilizador.getDespesaTotal();
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Usuario usuario = dataSnapshot.getValue( Usuario.class );
+                receitaTotal = usuario.getReceitaTotal();
             }
 
             @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+            public void onCancelled(DatabaseError databaseError) {
 
             }
         });
-    }
-    public void atualizarReceita(Double despesa){
-        String emailUtilizador = autenticacao.getCurrentUser().getEmail();
-        String idUtilizador = Base64Custom.codeBase64( emailUtilizador);
-        DatabaseReference utilizadorRef = firebaseRef.child("utilizadores").child(idUtilizador);
 
-        utilizadorRef.child("ReceitaTotal").setValue(despesa);
+    }
+
+    public void atualizarReceita(Double receita){
+
+        String emailUsuario = autenticacao.getCurrentUser().getEmail();
+        String idUsuario = Base64Custom.codificarBase64( emailUsuario );
+        DatabaseReference usuarioRef = firebaseRef.child("usuarios").child( idUsuario );
+
+        usuarioRef.child("receitaTotal").setValue(receita);
+
     }
 }

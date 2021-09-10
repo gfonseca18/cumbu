@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.gerciadev.cumbu"
-        minSdkVersion 16
+        minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -41,6 +41,7 @@ dependencies {
     implementation 'org.jetbrains:annotations:15.0'
     implementation 'androidx.navigation:navigation-fragment:2.3.0'
     implementation 'androidx.navigation:navigation-ui:2.3.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
@@ -57,7 +58,9 @@ dependencies {
     implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.4'
     implementation "com.android.support:design:30.0.0"
     implementation'com.hbb20:ccp:2.3.1'
-
+    implementation 'com.ismaeldivita.chipnavigation:chip-navigation-bar:1.3.4'
+    implementation'com.nineoldandroids:library:2.4.0'
+    implementation 'com.github.blackfizz:eazegraph:1.2.5l@aar'
 
 }
 apply plugin: 'com.google.gms.google-services'

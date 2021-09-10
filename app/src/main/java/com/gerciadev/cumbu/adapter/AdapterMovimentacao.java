@@ -1,25 +1,27 @@
 package com.gerciadev.cumbu.adapter;
 
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.gerciadev.cumbu.R;
+import com.gerciadev.cumbu.activity.PrincipalActivity;
 import com.gerciadev.cumbu.model.Movimentacao;
+import com.google.firebase.database.core.Context;
 
 import java.util.List;
 
 public class AdapterMovimentacao extends RecyclerView.Adapter<AdapterMovimentacao.MyViewHolder> {
 
     List<Movimentacao> movimentacoes;
-    Context context;
+    PrincipalActivity context;
 
-    public AdapterMovimentacao(List<Movimentacao> movimentacoes, Context context) {
+    public AdapterMovimentacao(List<Movimentacao> movimentacoes, PrincipalActivity context) {
         this.movimentacoes = movimentacoes;
         this.context = context;
     }
@@ -65,5 +67,4 @@ public class AdapterMovimentacao extends RecyclerView.Adapter<AdapterMovimentaca
         }
 
     }
-
 }

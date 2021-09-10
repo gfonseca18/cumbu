@@ -1,15 +1,15 @@
 <resources>
     <string name="app_name">cumbu</string>
-    <string name="title_activity_principal">PrincipalActivity</string>
+    <string name="title_activity_principal" translatable="false">PrincipalActivity</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="first_fragment_label" translatable="false">First Fragment</string>
+    <string name="second_fragment_label" translatable="false">Second Fragment</string>
+    <string name="next" translatable="false">Next</string>
+    <string name="previous" translatable="false">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="title_activity_premiere">PremiereActivity</string>
+    <string name="hello_first_fragment" translatable="false">Hello first fragment</string>
+    <string name="hello_second_fragment" translatable="false">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_premiere" translatable="false">PremiereActivity</string>
 
     <string name="intro">Monitore</string>
     <string name="intro1">As suas finanças</string>
@@ -25,16 +25,22 @@
     <string name="intro9"> e desfrute da facilidade de controlar todas as suas contas em um só lugar</string>
 
     <string name="signup">Crie uma conta grátis</string>
-    <string name="signup1">crie sua conta para começar a controlar seu dinheiro</string>
+    <string name="signup1">Crie sua conta para começar a controlar seu dinheiro</string>
     <string name="signup2">Cadastra-se com a conta da sua rede social</string>
-    <string name="signup3">digite o seu nome de utilizador</string>
-    <string name="signup4">digite a sua senha</string>
-    <string name="signup5">digite o seu nome de utilizador</string>
+    <string name="signup3">Digite o seu nome de utilizador</string>
+    <string name="signup4">Digite a sua senha</string>
+    <string name="signup5">Digite o seu email</string>
+    <string name="signup6">Inscrever-se</string>
+
 
 
     <string name="login1">Seja bem vindo de volta</string>
     <string name="login2">aceda a sua conta para começar a controlar o seu dinheiro</string>
-    <string name="login3">digite o seu email</string>
+    <string name="login3">Digite o seu email</string>
+    <string name="login01" >Entrar</string>
+
+    <string name="todo" >Termos de utilização</string>
+    <string name="todo1" >Pular</string>
 
 
 </resources>

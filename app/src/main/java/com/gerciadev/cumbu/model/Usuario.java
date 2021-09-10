@@ -1,29 +1,28 @@
 package com.gerciadev.cumbu.model;
 
-import com.gerciadev.cumbu.config.ConfigFirebase;
+import com.gerciadev.cumbu.config.ConfiguracaoFirebase;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
 
 /**
- * Created by gerciafonseca on 28/08/2021
+ * Created by gerciafonseca on 09/09/2021
  */
-public class Utilizador {
-    private String idUtilizador;
+public class Usuario {
+    private String idUsuario;
     private String nome;
-    private  String email;
-    private  String senha;
+    private String email;
+    private String senha;
     private Double receitaTotal = 0.00;
     private Double despesaTotal = 0.00;
 
-
-
-    public Utilizador() {
+    public Usuario() {
     }
+
     public void salvar(){
-        DatabaseReference firebase = ConfigFirebase.getFirebaseDatabase();
-        firebase.child("utilizadores")
-                .child(this.idUtilizador)
-                .setValue(this);
+        DatabaseReference firebase = ConfiguracaoFirebase.getFirebaseDatabase();
+        firebase.child("usuarios")
+                .child( this.idUsuario )
+                .setValue( this );
     }
 
     public Double getReceitaTotal() {
@@ -43,12 +42,12 @@ public class Utilizador {
     }
 
     @Exclude
-    public String getIdUtilizador() {
-        return idUtilizador;
+    public String getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setIdUtilizador(String idUtilizador) {
-        this.idUtilizador = idUtilizador;
+    public void setIdUsuario(String idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public String getNome() {
@@ -66,6 +65,7 @@ public class Utilizador {
     public void setEmail(String email) {
         this.email = email;
     }
+
     @Exclude
     public String getSenha() {
         return senha;
@@ -74,4 +74,5 @@ public class Utilizador {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
 }

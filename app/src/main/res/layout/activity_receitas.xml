@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.ReceitasActivity">
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
@@ -24,35 +23,40 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:ems="10"
-            android:hint="0.00"
+            android:gravity="end"
+            android:hint="R$ 00.00"
+            android:inputType="numberDecimal"
             android:textAlignment="textEnd"
-            android:inputType="textPersonName|numberDecimal"
-            android:textColor="@color/white"
-            android:textSize="30sp"
-            android:gravity="end" />
+            android:textColor="@android:color/white"
+            android:textSize="30sp" />
     </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout2"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.16000003"
         app:layout_constraintVertical_chainStyle="packed">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ex:Data" />
+            android:hint="Ex: 19/10/2019" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,14 +66,15 @@
             android:id="@+id/editCategoria"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ex:Salario" />
+            android:hint="ex: salário" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Ex: Sálario Mensal"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,23 +83,21 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editDescricao"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="ex: salário mensal" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fbSalvar"
+        android:id="@+id/fabSalvar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
-        app:srcCompat="@drawable/ic_check_24" />
-
+        app:srcCompat="@drawable/ic_check_24"
+        android:onClick="salvarReceita"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

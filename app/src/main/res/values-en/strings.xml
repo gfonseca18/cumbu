@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">cumbu</string>
+    <string name="intro">Monitor</string>
+    <string name="intro1">your finances</string>
+    <string name="intro2">Save now with our help</string>
+    <string name="intro0">Everything in life</string>
+    <string name="intro3">It\'s a question of balance</string>
+    <string name="intro4">Believe me, when it comes to finances it\'s no different.</string>
+    <string name="intro01">Create priorities</string>
+    <string name="intro5">Helps to be clear</string>
+    <string name="intro6">It doesn\'t depend on how much we earn, but on how we spend our rich money</string>
+    <string name="intro7">This is what we understand</string>
+    <string name="intro8">Count on our financial intelligence</string>
+    <string name="intro9">and enjoy the ease of controlling all your accounts in one place</string>
+    <string name="signup">Create a free account</string>
+    <string name="signup1">Create your account to start</string>
+    <string name="signup2">Sign up with your social network account</string>
+    <string name="signup3">Enter your username</string>
+    <string name="signup4">Enter your password</string>
+    <string name="signup5">Enter your email</string>
+    <string name="login1">Welcome back</string>
+    <string name="login2">Access your account to start controlling your money</string>
+    <string name="login3">Enter your email</string>
+    <string name="signup6">Sign Up</string>
+    <string name="login01">Login</string>
+    <string name="todo">Terms of Use</string>
+    <string name="todo1">Skip</string>
+</resources>

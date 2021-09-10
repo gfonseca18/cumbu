@@ -1,27 +1,30 @@
 package com.gerciadev.cumbu.activity;
 
-import android.app.Activity;
-import android.app.ActivityOptions;
+import android.animation.LayoutTransition;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 
 import com.gerciadev.cumbu.adapter.AdapterMovimentacao;
-import com.gerciadev.cumbu.config.ConfigFirebase;
-import com.gerciadev.cumbu.databinding.ActivityPrincipalBinding;
+import com.gerciadev.cumbu.config.ConfiguracaoFirebase;
+import com.gerciadev.cumbu.helper.Base64Custom;
+import com.gerciadev.cumbu.model.Movimentacao;
+import com.gerciadev.cumbu.model.Usuario;
+import com.google.android.material.snackbar.Snackbar;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.util.Pair;
+import android.transition.AutoTransition;
+import android.transition.TransitionManager;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -30,12 +33,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-//import com.gerciadev.cumbu.activity.databinding.ActivityPrincipalBinding;
-
 import com.gerciadev.cumbu.R;
-import com.gerciadev.cumbu.helper.Base64Custom;
-import com.gerciadev.cumbu.model.Movimentacao;
-import com.gerciadev.cumbu.model.Utilizador;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -44,8 +42,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -57,14 +53,12 @@ public class PrincipalActivity extends AppCompatActivity {
     private TextView textoSaudacao, textoSaldo;
     private Double despesaTotal = 0.0;
     private Double receitaTotal = 0.0;
-    private Double resumoUtilizador = 0.0;
+    private Double resumoUsuario = 0.0;
 
-
-    private FirebaseAuth autenticacao = ConfigFirebase.getFirebaseAutenticacao();
-    private DatabaseReference firebaseRef = ConfigFirebase.getFirebaseDatabase();
-
-    private DatabaseReference utilizadorRef;
-    private ValueEventListener valueEventListenerUtilizador;
+    private FirebaseAuth autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
+    private DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebaseDatabase();
+    private DatabaseReference usuarioRef;
+    private ValueEventListener valueEventListenerUsuario;
     private ValueEventListener valueEventListenerMovimentacoes;
 
     private RecyclerView recyclerView;
@@ -74,15 +68,15 @@ public class PrincipalActivity extends AppCompatActivity {
     private DatabaseReference movimentacaoRef;
     private String mesAnoSelecionado;
 
+    private LinearLayout linearLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        /*Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("Organizze");
-        setSupportActionBar(toolbar);*/
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("Cumbu");
+        setSupportActionBar(toolbar);
 
         textoSaldo = findViewById(R.id.textSaldo);
         textoSaudacao = findViewById(R.id.textSaudacao);
@@ -99,6 +93,10 @@ public class PrincipalActivity extends AppCompatActivity {
         recyclerView.setLayoutManager( layoutManager );
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter( adapterMovimentacao );
+
+        linearLayout = findViewById(R.id.linear1);
+        linearLayout.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
 
 
     }
@@ -144,10 +142,10 @@ public class PrincipalActivity extends AppCompatActivity {
                 int position = viewHolder.getAdapterPosition();
                 movimentacao = movimentacoes.get( position );
 
-                String emailUtilizador = autenticacao.getCurrentUser().getEmail();
-                String idUtilizador = Base64Custom.codeBase64( emailUtilizador );
+                String emailUsuario = autenticacao.getCurrentUser().getEmail();
+                String idUsuario = Base64Custom.codificarBase64( emailUsuario );
                 movimentacaoRef = firebaseRef.child("movimentacao")
-                        .child( idUtilizador )
+                        .child( idUsuario )
                         .child( mesAnoSelecionado );
 
                 movimentacaoRef.child( movimentacao.getKey() ).removeValue();
@@ -175,18 +173,18 @@ public class PrincipalActivity extends AppCompatActivity {
 
     public void atualizarSaldo(){
 
-        String emailUtilizador = autenticacao.getCurrentUser().getEmail();
-        String idUsuario = Base64Custom.codeBase64( emailUtilizador );
-        utilizadorRef = firebaseRef.child("utilizadores").child( idUsuario );
+        String emailUsuario = autenticacao.getCurrentUser().getEmail();
+        String idUsuario = Base64Custom.codificarBase64( emailUsuario );
+        usuarioRef = firebaseRef.child("usuarios").child( idUsuario );
 
         if ( movimentacao.getTipo().equals("r") ){
             receitaTotal = receitaTotal - movimentacao.getValor();
-            utilizadorRef.child("receitaTotal").setValue(receitaTotal);
+            usuarioRef.child("receitaTotal").setValue(receitaTotal);
         }
 
         if ( movimentacao.getTipo().equals("d") ){
             despesaTotal = despesaTotal - movimentacao.getValor();
-            utilizadorRef.child("despesaTotal").setValue( despesaTotal );
+            usuarioRef.child("despesaTotal").setValue( despesaTotal );
         }
 
     }
@@ -194,7 +192,7 @@ public class PrincipalActivity extends AppCompatActivity {
     public void recuperarMovimentacoes(){
 
         String emailUsuario = autenticacao.getCurrentUser().getEmail();
-        String idUsuario = Base64Custom.codeBase64( emailUsuario );
+        String idUsuario = Base64Custom.codificarBase64( emailUsuario );
         movimentacaoRef = firebaseRef.child("movimentacao")
                 .child( idUsuario )
                 .child( mesAnoSelecionado );
@@ -227,23 +225,23 @@ public class PrincipalActivity extends AppCompatActivity {
     public void recuperarResumo(){
 
         String emailUsuario = autenticacao.getCurrentUser().getEmail();
-        String idUsuario = Base64Custom.codeBase64( emailUsuario );
-        utilizadorRef = firebaseRef.child("utilizadores").child( idUsuario );
+        String idUsuario = Base64Custom.codificarBase64( emailUsuario );
+        usuarioRef = firebaseRef.child("usuarios").child( idUsuario );
 
-        valueEventListenerUtilizador = utilizadorRef.addValueEventListener(new ValueEventListener() {
+        valueEventListenerUsuario = usuarioRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                Utilizador utilizador = dataSnapshot.getValue( Utilizador.class );
+                Usuario usuario = dataSnapshot.getValue( Usuario.class );
 
-                despesaTotal = utilizador.getDespesaTotal();
-                receitaTotal = utilizador.getReceitaTotal();
-                resumoUtilizador = receitaTotal - despesaTotal;
+                despesaTotal = usuario.getDespesaTotal();
+                receitaTotal = usuario.getReceitaTotal();
+                resumoUsuario = receitaTotal - despesaTotal;
 
                 DecimalFormat decimalFormat = new DecimalFormat("0.##");
-                String resultadoFormatado = decimalFormat.format( resumoUtilizador );
+                String resultadoFormatado = decimalFormat.format( resumoUsuario );
 
-                textoSaudacao.setText("Olá, " + utilizador.getNome() );
+                textoSaudacao.setText("Olá, " + usuario.getNome() );
                 textoSaldo.setText( "R$ " + resultadoFormatado );
 
             }
@@ -256,7 +254,7 @@ public class PrincipalActivity extends AppCompatActivity {
 
     }
 
-   /* @Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_principal, menu);
         return super.onCreateOptionsMenu(menu);
@@ -272,7 +270,7 @@ public class PrincipalActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
-    }*/
+    }
 
     public void adicionarDespesa(View view){
         startActivity(new Intent(this, DespesasActivity.class));
@@ -314,8 +312,17 @@ public class PrincipalActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        utilizadorRef.removeEventListener( valueEventListenerUtilizador );
+        usuarioRef.removeEventListener( valueEventListenerUsuario );
         movimentacaoRef.removeEventListener( valueEventListenerMovimentacoes );
     }
 
+    public void expand(View view){
+        int v = (textoSaldo.getVisibility()== View.GONE)? View.VISIBLE: View.GONE;
+        int c = (textoSaudacao.getVisibility()== View.GONE)? View.VISIBLE: View.GONE;
+
+        TransitionManager.beginDelayedTransition(linearLayout,new AutoTransition());
+        textoSaudacao.setVisibility(v);
+        textoSaldo.setVisibility(c);
+
+    }
 }

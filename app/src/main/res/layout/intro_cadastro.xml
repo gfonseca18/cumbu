@@ -43,8 +43,8 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Login"
-                android:onClick="btEntrar"
+                android:text="@string/signup6"
+                android:onClick="btCadastrar"
                 android:textColor="@color/white"
                 android:background="@drawable/edittext_background"
                 android:layout_weight="1"
@@ -54,10 +54,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:onClick="btCadastrar"
+                android:onClick="btEntrar"
                 android:transitionName="transition_signUp"
                 android:textColor="@color/white"
-                android:text="SignUp"
+                android:text="@string/login01"
                 android:background="@drawable/edittext_background"
                 android:layout_weight="1"/>
         </LinearLayout>

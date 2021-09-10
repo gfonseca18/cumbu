@@ -1,6 +1,6 @@
 package com.gerciadev.cumbu.model;
 
-import com.gerciadev.cumbu.config.ConfigFirebase;
+import com.gerciadev.cumbu.config.ConfiguracaoFirebase;
 import com.gerciadev.cumbu.helper.Base64Custom;
 import com.gerciadev.cumbu.helper.DateCustom;
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,22 +18,22 @@ public class Movimentacao {
     private double valor;
     private String key;
 
-
-    public Movimentacao(){
-
+    public Movimentacao() {
     }
 
     public void salvar(String dataEscolhida){
 
-        FirebaseAuth autenticacao = ConfigFirebase.getFirebaseAutenticacao();
-        String idUtilizador = Base64Custom.codeBase64(autenticacao.getCurrentUser().getEmail());
-        String mesAno = DateCustom.mesAnoDataEscolhida(dataEscolhida);
-        DatabaseReference firebase = ConfigFirebase.getFirebaseDatabase();
+        FirebaseAuth autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
+        String idUsuario = Base64Custom.codificarBase64( autenticacao.getCurrentUser().getEmail() );
+        String mesAno = DateCustom.mesAnoDataEscolhida( dataEscolhida );
+
+        DatabaseReference firebase = ConfiguracaoFirebase.getFirebaseDatabase();
         firebase.child("movimentacao")
-                .child(idUtilizador)
-                .child(mesAno)
+                .child( idUsuario )
+                .child( mesAno )
                 .push()
                 .setValue(this);
+
     }
 
     public String getKey() {

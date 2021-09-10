@@ -8,21 +8,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Cumbu"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".IntroActivity"></activity>
-        <activity android:name=".activity.BudgetActivity" />
-        <activity android:name=".adapter.AdapterMovimentacao" />
-        <activity android:name=".activity.DespesasActivity" />
-        <activity
-            android:name=".activity.ReceitasActivity"
-            android:theme="@style/receitaTheme" />
+        android:theme="@style/Theme.Cumbu">
         <activity
             android:name=".activity.PrincipalActivity"
             android:label="@string/title_activity_principal"
-            android:theme="@style/Theme.Cumbu.NoActionBar" />
-        <activity android:name=".activity.CadastroActivity" />
-        <activity android:name=".activity.LoginActivity" />
+            android:theme="@style/Theme.Cumbu.NoActionBar"></activity>
         <activity
             android:name=".activity.MainActivity"
             android:theme="@style/Theme.Intro">
@@ -32,6 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.CadastroActivity" />
+        <activity
+            android:name=".activity.ReceitasActivity"
+            android:theme="@style/receitaTheme" />
+        <activity
+            android:name=".activity.DespesasActivity"
+            android:theme="@style/despesaTheme" />
 
         <meta-data
             android:name="preloaded_fonts"
