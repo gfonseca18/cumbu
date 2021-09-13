@@ -1,30 +1,33 @@
 package com.gerciadev.cumbu.adapter;
 
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.gerciadev.cumbu.R;
 import com.gerciadev.cumbu.activity.PrincipalActivity;
 import com.gerciadev.cumbu.model.Movimentacao;
-import com.google.firebase.database.core.Context;
 
 import java.util.List;
 
 public class AdapterMovimentacao extends RecyclerView.Adapter<AdapterMovimentacao.MyViewHolder> {
 
     List<Movimentacao> movimentacoes;
-    PrincipalActivity context;
+    Context context;
 
-    public AdapterMovimentacao(List<Movimentacao> movimentacoes, PrincipalActivity context) {
+    public AdapterMovimentacao(List<Movimentacao> movimentacoes, Context context) {
         this.movimentacoes = movimentacoes;
         this.context = context;
     }
+
+
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -35,7 +38,7 @@ public class AdapterMovimentacao extends RecyclerView.Adapter<AdapterMovimentaca
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Movimentacao movimentacao = movimentacoes.get(position);
+        final Movimentacao movimentacao = movimentacoes.get(position);
 
         holder.titulo.setText(movimentacao.getDescricao());
         holder.valor.setText(String.valueOf(movimentacao.getValor()));

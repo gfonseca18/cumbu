@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.gerciadev.cumbu.HomeActivity;
 import com.gerciadev.cumbu.R;
 import com.gerciadev.cumbu.config.ConfiguracaoFirebase;
 import com.gerciadev.cumbu.model.Usuario;
@@ -104,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void abrirTelaPrincipal(){
-        startActivity(new Intent(this, PrincipalActivity.class));
+        startActivity(new Intent(this, HomeActivity.class));
         finish();
     }
     public void callHome(){

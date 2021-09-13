@@ -33,14 +33,15 @@
     <string name="signup6">Inscrever-se</string>
 
 
-
     <string name="login1">Seja bem vindo de volta</string>
     <string name="login2">aceda a sua conta para começar a controlar o seu dinheiro</string>
     <string name="login3">Digite o seu email</string>
-    <string name="login01" >Entrar</string>
+    <string name="login01">Entrar</string>
 
-    <string name="todo" >Termos de utilização</string>
-    <string name="todo1" >Pular</string>
+    <string name="todo">Termos de utilização</string>
+    <string name="todo1">Pular</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Cumbu">
+        <activity android:name=".HomeActivity" />
         <activity
             android:name=".activity.PrincipalActivity"
             android:label="@string/title_activity_principal"
-            android:theme="@style/Theme.Cumbu.NoActionBar"></activity>
+            android:theme="@style/Theme.Cumbu.NoActionBar" />
         <activity
             android:name=".activity.MainActivity"
             android:theme="@style/Theme.Intro">

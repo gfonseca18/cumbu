@@ -17,7 +17,7 @@
     <color name="dark_pink">#c6419e</color>
     <color name="yellow"> #e5a818</color>
 
-
+    <color name="colorTextIcons">#B6FFFFFF</color>
 
     <color name="colorPrimary">#01c7d2</color>
     <color name="colorPrimaryDark">#00b2bc</color>

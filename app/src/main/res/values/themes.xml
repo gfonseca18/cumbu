@@ -2,8 +2,10 @@
     <!-- Base application theme. -->
     <style name="Theme.Cumbu" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/blue</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:statusBarColor" tools:ignore="NewApi">@color/colorTextIcons</item>
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
         <item name="colorAccent">@color/colorAccent</item>
         <!-- Customize your theme here. -->
     </style>
