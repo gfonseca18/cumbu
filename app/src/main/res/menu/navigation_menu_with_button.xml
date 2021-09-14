@@ -4,44 +4,32 @@
 <item
     android:id="@+id/wallet"
     android:title="Wallet"
-
     android:icon="@drawable/ic_wallet_3_fill"
-    app:cnb_iconColor="@color/dark_pink"
     />
     <item
         android:id="@+id/coins"
         android:title="Coins"
-
         android:icon="@drawable/ic_coins_fill"
-        app:cnb_iconColor="@color/dark_pink"
        />
     <item
         android:id="@+id/add"
         android:title="Add"
-
         android:icon="@drawable/ic_plus_circle"
-        app:cnb_iconColor="@color/dark_pink"
-        />
-    <item
-        android:id="@+id/blank"
-        android:title=""
 
-        android:enabled="false"
-        app:showAsAction="ifRoom" />
+        />
+
     <item
         android:id="@+id/pie"
         android:title="Pie"
-
         android:icon="@drawable/ic_pie_chart_2_fill"
-        app:cnb_iconColor="@color/dark_pink"
+
        />
 
     <item
         android:id="@+id/settings"
         android:title="Tools"
-
         android:icon="@drawable/ic_equalizer_line"
-        app:cnb_iconColor="@color/dark_pink"
+
         />
 
 </menu>

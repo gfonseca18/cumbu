@@ -5,7 +5,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -31,13 +35,14 @@ import com.gerciadev.cumbu.fragments.ToolsFragment;
 import com.gerciadev.cumbu.fragments.WalletFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.ogaclejapan.smarttablayout.utils.ViewPagerItemAdapter;
 
 import org.jetbrains.annotations.NotNull;
 
 public class HomeActivity extends AppCompatActivity {
-    private Toolbar toolbar;
+
     private FirebaseAuth autenticacao;
-    private FrameLayout frameLayout;
+    private ViewPager viewPager;
     private  BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,55 +51,82 @@ public class HomeActivity extends AppCompatActivity {
         //configuracoes de objetos
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
 
-        frameLayout = findViewById(R.id.viewPager);
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        viewPager = findViewById(R.id.viewPager);
+        //toolbar = findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
         bottomNavigationView = findViewById(R.id.bottomNavigation);
-        frameLayout  = findViewById(R.id.viewPager);
+        viewPager  = findViewById(R.id.viewPager);
+
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(),FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position){
+                    case 0:
+                        bottomNavigationView.getMenu().findItem(R.id.wallet).setChecked(true);
+                        break;
+                    case 1:
+                        bottomNavigationView.getMenu().findItem(R.id.coins).setChecked(true);
+                        break;
+                    case 2:
+                        bottomNavigationView.getMenu().findItem(R.id.add).setChecked(true);
+                        break;
+                    case 3:
+                        bottomNavigationView.getMenu().findItem(R.id.pie).setChecked(true);
+                        break;
+                    case 4:
+                        bottomNavigationView.getMenu().findItem(R.id.settings).setChecked(true);
+                        break;
+                }
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
+
             @Override
             public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
-                switch (item.getItemId())
-                {
+                switch (item.getItemId()){
                     case R.id.wallet:
-                        WalletFragment walletFragment = new WalletFragment();
-                        selectFragment(walletFragment);
+                        viewPager.setCurrentItem(0);
                         break;
                     case R.id.coins:
-                        CoinsFragment coinsFragment = new CoinsFragment();
-                        selectFragment(coinsFragment);
+                        viewPager.setCurrentItem(1);
                         break;
                     case R.id.add:
-                        showPublishContentDialogue();
+                        viewPager.setCurrentItem(2);
                         break;
                     case R.id.pie:
-                        PieFragment pieFragment = new PieFragment();
-                        selectFragment(pieFragment);
+                        viewPager.setCurrentItem(3);
                         break;
                     case R.id.settings:
-                       ToolsFragment toolsFragment = new ToolsFragment();
-                        selectFragment(toolsFragment);
+                        viewPager.setCurrentItem(4);
                         break;
 
                 }
-
-                return false;
+                return true;
             }
-
         });
-        bottomNavigationView.setSelectedItemId(R.id.wallet);
-    }
 
-    private void selectFragment(Fragment fragment){
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.viewPager,fragment);
-        fragmentTransaction.commit();
+
 
     }
 
-    private void setSupportActionBar(Toolbar toolbar) {
+
+
+   /* private void setSupportActionBar(Toolbar toolbar) {
     }
 
 
@@ -126,13 +158,13 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-    }
+    }*/
 
-    @Override
+   /* @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
         return super.onCreateOptionsMenu(menu);
-    }
+    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

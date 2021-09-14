@@ -7,101 +7,25 @@
     android:layout_gravity="center"
     tools:context=".fragments.AddFragment">
 
-    <LinearLayout
+   <com.google.android.material.tabs.TabLayout
+       android:id="@+id/tab_layout"
+       android:layout_width="match_parent"
+       app:tabMode="fixed"
+       app:tabBackground="@color/white"
+       app:tabGravity="fill"
+       android:elevation="3dp"
+       android:background="@drawable/tab_rect"
+       android:layout_margin="12dp"
+       app:tabIndicatorHeight="0dp"
+       app:tabSelectedTextColor="@color/blue"
+       app:tabTextColor="@color/pink"
+       app:tabTextAppearance="@style/TabLayout"
+       app:tabIndicatorColor="@color/pink"
+       android:layout_height="wrap_content"/>
+    <com.gerciadev.cumbu.CustomViewPage
+        android:id="@+id/add_viewpager"
+        android:layout_below="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical"
-        android:padding="10dp"
-      >
-      <RelativeLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:id="@+id/r1"
-          android:background="@drawable/background_caixa_texto"
-          android:layout_gravity="center"
-          android:padding="5dp"
-        >
-        <ImageView
-            android:layout_width="35dp"
-            app:tint="@color/pink"
-            android:id="@+id/imageView"
-            android:layout_height="35dp"
-            android:src="@drawable/coins_decrease"/>
-          <LinearLayout
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_toEndOf="@+id/imageView"
-              android:orientation="vertical"
-              android:layout_marginStart="5dp"
-              >
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="Adicionar Receita"
-                  android:textSize="17sp"
-                  android:fontFamily="@font/muli_bold"
-                  android:textColor="@color/blue"
-                  android:includeFontPadding="false"
-                  android:id="@+id/txt_add_r"
-                  />
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="Adicionar Receita todo tipo de entrada"
-                  android:fontFamily="@font/muli_bold"
-                  android:textSize="13sp"
-                  android:textColor="@color/blue"
-                  android:includeFontPadding="false"
-
-                  />
-          </LinearLayout>
-      </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/r2"
-            android:background="@drawable/background_caixa_texto"
-            android:layout_gravity="center"
-            android:padding="5dp"
-            >
-            <ImageView
-                android:layout_width="35dp"
-                app:tint="@color/blue"
-                android:id="@+id/imageView1"
-                android:layout_height="35dp"
-                android:src="@drawable/coins_encrease"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/imageView1"
-                android:orientation="vertical"
-                android:layout_marginStart="5dp"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Adicionar Despesas"
-                    android:textSize="17sp"
-                    android:fontFamily="@font/muli_bold"
-                    android:textColor="@color/blue"
-                    android:includeFontPadding="false"
-                    android:id="@+id/txt_add_d"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Adicionar Receita todo tipo de entrada"
-                    android:fontFamily="@font/muli_bold"
-                    android:textSize="13sp"
-                    android:textColor="@color/blue"
-                    android:includeFontPadding="false"
-
-                    />
-            </LinearLayout>
-        </RelativeLayout>
-
-
-    </LinearLayout>
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>
