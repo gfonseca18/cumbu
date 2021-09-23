@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="10dp"
-        fab:menu_icon="@drawable/ic_add"
+        fab:menu_icon="@drawable/ic_plus_circle"
         app:menu_colorNormal="@color/blue"
         app:menu_colorPressed="@color/colorAccent"
         >
@@ -40,9 +40,9 @@
             android:onClick="adicionarDespesa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_check_24"
-            fab:fab_colorNormal="@color/colorPrimaryDespesa"
-            fab:fab_label="Despesa"
+            android:src="@drawable/ic_money_withdraw"
+            fab:fab_colorNormal="@color/white"
+            fab:fab_label="@string/fab1"
             fab:fab_size="mini"
             />
 
@@ -51,9 +51,9 @@
             android:onClick="adicionarReceita"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_check_24"
-            fab:fab_colorNormal="@color/colorPrimaryReceita"
-            fab:fab_label="Receita"
+            android:src="@drawable/ic_money_insert"
+            fab:fab_colorNormal="@color/white"
+            fab:fab_label="@string/fab2"
             fab:fab_size="mini"
             />
 

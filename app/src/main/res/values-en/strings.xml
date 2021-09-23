@@ -26,4 +26,58 @@
     <string name="login01">Login</string>
     <string name="todo">Terms of Use</string>
     <string name="todo1">Skip</string>
+    <string name="toastD">Description not filled!</string>
+    <string name="toastC">Category not filled!</string>
+    <string name="toastDt">Date not filled in!</string>
+    <string name="toastV">Value has not been filled in!</string>
+    <string name="toasteD">Description not filled!</string>
+    <string name="toasteC">Category not filled!</string>
+    <string name="toasteDt">Date not filled in!</string>
+    <string name="toasteV">Value has not been filled in!</string>
+    <string name="suada">Hello</string>
+    <string name="cadastro">Fill in the password</string>
+    <string name="cadastro1">Fill in the email!</string>
+    <string name="cadastro2">Fill in the name!</string>
+    <string name="cadastro3">Enter a stronger password!</string>
+    <string name="cadastro4">Please, type a valid email</string>
+    <string name="cadastro5">This account has already been registered</string>
+    <string name="cadastro6">Error registering user:</string>
+    <string name="hint1">ex: monthly salary</string>
+    <string name="hint2">ex: food</string>
+    <string name="fab1">Expense</string>
+    <string name="fab2">Income</string>
+    <string name="sauda">general balance</string>
+    <string-array name="meses">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+    <string-array name="Despesas">
+        <item>Select expense</item>
+        <item>Transport</item>
+        <item>Food</item>
+        <item>Fun</item>
+        <item>Education</item>
+        <item>Charity</item>
+        <item>Health</item>
+        <item>LifeStyle</item>
+        <item>Rent</item>
+        <item>Others</item>
+    </string-array>
+
+    <string-array name="Receitas">
+        <item>Select Income</item>
+        <item>Salary</item>
+        <item>Investments</item>
+
+    </string-array>
 </resources>

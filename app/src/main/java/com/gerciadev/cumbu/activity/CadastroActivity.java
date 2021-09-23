@@ -6,8 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gerciadev.cumbu.R;
@@ -22,21 +26,34 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
-public class CadastroActivity extends AppCompatActivity {
+
+public class CadastroActivity extends AppCompatActivity  implements AdapterView.OnItemSelectedListener {
     private EditText campoNome, campoEmail, campoSenha;
+    private TextView moeda;
     private Button botaoCadastrar;
     private FirebaseAuth autenticacao;
     private Usuario usuario;
+    private Spinner spinner;
+    String item;
+    String [] moedaw = {"Choose Currency","EUR","USD","AOA"};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
-
+        moeda = findViewById(R.id.moeda);
         campoNome = findViewById(R.id.editNome);
         campoEmail = findViewById(R.id.editEmail);
         campoSenha = findViewById(R.id.editSenha);
         botaoCadastrar = findViewById(R.id.buttonCadastrar);
+        spinner = findViewById(R.id.spinner);
+        spinner.setOnItemSelectedListener(this);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item,moedaw);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(arrayAdapter);
+
+
 
         botaoCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +62,7 @@ public class CadastroActivity extends AppCompatActivity {
                 String textoNome = campoNome.getText().toString();
                 String textoEmail = campoEmail.getText().toString();
                 String textoSenha = campoSenha.getText().toString();
-
+                String c = moeda.getText().toString();
                 //Validar se os campos foram preenchidos
                 if ( !textoNome.isEmpty() ){
                     if ( !textoEmail.isEmpty() ){
@@ -55,21 +72,24 @@ public class CadastroActivity extends AppCompatActivity {
                             usuario.setNome( textoNome );
                             usuario.setEmail( textoEmail );
                             usuario.setSenha( textoSenha );
+                            usuario.setCurrency(c);
+
                             cadastrarUsuario();
+
 
                         }else {
                             Toast.makeText(CadastroActivity.this,
-                                    "Preencha a senha!",
+                                    getResources().getString(R.string.cadastro),
                                     Toast.LENGTH_SHORT).show();
                         }
                     }else {
                         Toast.makeText(CadastroActivity.this,
-                                "Preencha o email!",
+                                getResources().getString(R.string.cadastro1),
                                 Toast.LENGTH_SHORT).show();
                     }
                 }else {
                     Toast.makeText(CadastroActivity.this,
-                            "Preencha o nome!",
+                            getResources().getString(R.string.cadastro2),
                             Toast.LENGTH_SHORT).show();
                 }
 
@@ -100,13 +120,13 @@ public class CadastroActivity extends AppCompatActivity {
                     try {
                         throw task.getException();
                     }catch ( FirebaseAuthWeakPasswordException e){
-                        excecao = "Digite uma senha mais forte!";
+                        excecao = getResources().getString(R.string.cadastro3);
                     }catch ( FirebaseAuthInvalidCredentialsException e){
-                        excecao= "Por favor, digite um e-mail válido";
+                        excecao= getResources().getString(R.string.cadastro4);
                     }catch ( FirebaseAuthUserCollisionException e){
-                        excecao = "Este conta já foi cadastrada";
+                        excecao = getResources().getString(R.string.cadastro5);
                     }catch (Exception e){
-                        excecao = "Erro ao cadastrar usuário: "  + e.getMessage();
+                        excecao = getResources().getString(R.string.cadastro6)  + e.getMessage();
                         e.printStackTrace();
                     }
 
@@ -118,7 +138,20 @@ public class CadastroActivity extends AppCompatActivity {
         });
 
     }
+
     public void callHome(){
         startActivity(new Intent(this, PrincipalActivity.class));
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+              item = spinner.getSelectedItem().toString();
+              moeda.setText(item);
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

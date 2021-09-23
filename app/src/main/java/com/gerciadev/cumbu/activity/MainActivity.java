@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.gerciadev.cumbu.HomeActivity;
 import com.gerciadev.cumbu.R;
 import com.gerciadev.cumbu.config.ConfiguracaoFirebase;
 import com.google.firebase.auth.FirebaseAuth;
@@ -74,7 +73,7 @@ public class MainActivity extends IntroActivity {
     }
 
     public void abrirTelaPrincipal(){
-        startActivity(new Intent(this, HomeActivity.class));
+        startActivity(new Intent(this, PrincipalActivity.class));
     }
 
 }

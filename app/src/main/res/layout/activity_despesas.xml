@@ -25,7 +25,7 @@
             android:background="@android:color/transparent"
             android:ems="10"
             android:gravity="end"
-            android:hint="R$ 00.00"
+            android:hint="00.00"
             android:inputType="numberDecimal"
             android:textAlignment="textEnd"
             android:textColor="@android:color/white"
@@ -67,7 +67,16 @@
             android:id="@+id/editCategoria"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="ex: salário" />
+             />
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:entries="@array/Despesas" />
+
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -85,7 +94,7 @@
             android:id="@+id/editDescricao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="ex: salário mensal" />
+            android:hint="@string/hint2"  />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

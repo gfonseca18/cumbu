@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.fragment.app.FragmentActivity;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.gerciadev.cumbu.R;
@@ -44,6 +44,7 @@ public class AdapterMovimentacao extends RecyclerView.Adapter<AdapterMovimentaca
         holder.valor.setText(String.valueOf(movimentacao.getValor()));
         holder.categoria.setText(movimentacao.getCategoria());
         holder.valor.setTextColor(context.getResources().getColor(R.color.colorAccentReceita));
+
 
         if (movimentacao.getTipo().equals("d")) {
             holder.valor.setTextColor(context.getResources().getColor(R.color.colorAccent));

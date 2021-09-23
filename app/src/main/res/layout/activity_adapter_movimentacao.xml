@@ -25,6 +25,7 @@
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
 
+
             <TextView
                 android:id="@+id/textAdapterValor"
                 android:layout_width="wrap_content"

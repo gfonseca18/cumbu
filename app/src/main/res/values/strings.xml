@@ -31,17 +31,82 @@
     <string name="signup4">Digite a sua senha</string>
     <string name="signup5">Digite o seu email</string>
     <string name="signup6">Inscrever-se</string>
+    <string-array name="Despesas">
+        <item>Selecione a despesa</item>
+        <item>Transporte</item>
+        <item>Comida</item>
+        <item>Entertenimento</item>
+        <item>Educação</item>
+        <item>Caridade</item>
+        <item>Saúde</item>
+        <item>Estilo de vida</item>
+        <item>Renda</item>
+        <item>Diversos</item>
+    </string-array>
 
+    <string-array name="Receitas">
+        <item>Selecione a receita</item>
+        <item>Salario</item>
+        <item>Investimentos</item>
+
+    </string-array>
+
+    <string name="toastD">Descrição não foi preenchida!</string>
+    <string name="toastC">Categoria não foi preenchida!</string>
+    <string name="toastDt">Data não foi preenchida!</string>
+    <string name="toastV">Valor não foi preenchido!</string>
+
+    <string name="toasteD">Descrição não foi preenchida!</string>
+    <string name="toasteC">Categoria não foi preenchida!</string>
+    <string name="toasteDt">Data não foi preenchida!</string>
+    <string name="toasteV">Valor não foi preenchido!</string>
 
     <string name="login1">Seja bem vindo de volta</string>
     <string name="login2">aceda a sua conta para começar a controlar o seu dinheiro</string>
     <string name="login3">Digite o seu email</string>
     <string name="login01">Entrar</string>
 
+    <string name="dialogex" translatable="false">Excluir Movimentação da Conta</string>
+    <string name="dialogex1" translatable="false">Você tem certeza que deseja realmente excluir essa movimentação de sua conta?</string>
+
+    <string-array name="meses">
+        <item>Janeiro</item>
+        <item>Fevereiro</item>
+        <item>Março</item>
+        <item>Abril</item>
+        <item>Maio</item>
+        <item>Junho</item>
+        <item>Julho</item>
+        <item>Agosto</item>
+        <item>Setembro</item>
+        <item>Outubro</item>
+        <item>Novembro</item>
+        <item>Dezembro</item>
+    </string-array>
+
+    <string name="suada">Ola</string>
     <string name="todo">Termos de utilização</string>
     <string name="todo1">Pular</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="cadastro">Preencha a senha!</string>
+    <string name="cadastro1">Preencha o email!</string>
+    <string name="cadastro2">Preencha o nome!</string>
+
+    <string name="cadastro3">Digite uma senha mais forte!</string>
+    <string name="cadastro4">Por favor, digite um e-mail válido</string>
+    <string name="cadastro5">Este conta já foi cadastrada</string>
+    <string name="cadastro6">Erro ao cadastrar usuário: " </string>
+
+    <string name="hint1">ex: salário mensal</string>
+    <string name="hint2">ex: comida</string>
+
+    <string name="fab1">Despesa</string>
+    <string name="fab2">Receita</string>
+
+    <string name="sauda">saldo geral</string>
+
+
+
 
 
 </resources>

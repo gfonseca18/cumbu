@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.gerciadev.cumbu.R;
@@ -20,13 +23,17 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
-public class ReceitasActivity extends AppCompatActivity {
+public class ReceitasActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private TextInputEditText campoData, campoCategoria, campoDescricao;
     private EditText campoValor;
     private Movimentacao movimentacao;
     private DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebaseDatabase();
     private FirebaseAuth autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
     private Double receitaTotal;
+
+    private Spinner spinner;
+    String item;
+    String [] receitas = getResources().getStringArray(R.array.Receitas);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +47,11 @@ public class ReceitasActivity extends AppCompatActivity {
 
         //Preenche o campo data com a date atual
         campoData.setText( DateCustom.dataAtual() );
+        spinner = findViewById(R.id.spinner3);
+        spinner.setOnItemSelectedListener(this);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item,receitas);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(arrayAdapter);
         recuperarReceitaTotal();
 
     }
@@ -84,25 +96,25 @@ public class ReceitasActivity extends AppCompatActivity {
                         return true;
                     }else {
                         Toast.makeText(ReceitasActivity.this,
-                                "Descrição não foi preenchida!",
+                                getResources().getString(R.string.toastD),
                                 Toast.LENGTH_SHORT).show();
                         return false;
                     }
                 }else {
                     Toast.makeText(ReceitasActivity.this,
-                            "Categoria não foi preenchida!",
+                            getResources().getString(R.string.toasteC),
                             Toast.LENGTH_SHORT).show();
                     return false;
                 }
             }else {
                 Toast.makeText(ReceitasActivity.this,
-                        "Data não foi preenchida!",
+                        getResources().getString(R.string.toastDt),
                         Toast.LENGTH_SHORT).show();
                 return false;
             }
         }else {
             Toast.makeText(ReceitasActivity.this,
-                    "Valor não foi preenchido!",
+                    getResources().getString(R.string.toastV),
                     Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -138,6 +150,17 @@ public class ReceitasActivity extends AppCompatActivity {
         DatabaseReference usuarioRef = firebaseRef.child("usuarios").child( idUsuario );
 
         usuarioRef.child("receitaTotal").setValue(receita);
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        item = spinner.getSelectedItem().toString();
+        campoCategoria.setText(item);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 }

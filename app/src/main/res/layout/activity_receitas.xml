@@ -24,7 +24,7 @@
             android:background="@android:color/transparent"
             android:ems="10"
             android:gravity="end"
-            android:hint="R$ 00.00"
+            android:hint=" 00.00"
             android:inputType="numberDecimal"
             android:textAlignment="textEnd"
             android:textColor="@android:color/white"
@@ -37,7 +37,7 @@
         android:layout_height="56dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
+        app:layout_constraintBottom_toTopOf="@+id/editCategoria"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
@@ -52,7 +52,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/editCategoria"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -62,11 +62,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editCategoria"
+        <Spinner
+            android:id="@+id/spinner3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="ex: salário" />
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:entries="@array/Receitas" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -78,13 +80,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/editCategoria">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editDescricao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="ex: salário mensal" />
+            android:hint="@string/hint1" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

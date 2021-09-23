@@ -16,9 +16,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
-    dataBinding{
-        enabled= true
-    }
+
 
     buildTypes {
         release {
@@ -46,6 +44,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.3.0'
     implementation 'androidx.navigation:navigation-ui:2.3.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.firebase:firebase-storage:20.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
@@ -54,7 +53,12 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation'com.google.firebase:firebase-database:20.0.1'
     implementation'com.google.firebase:firebase-auth:21.0.1'
+    implementation 'com.firebaseui:firebase-ui-database:7.2.0'
     //
+    //Dependências circle image view
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    //Dependência da Lib Universal Image Loader
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     implementation 'com.heinrichreimersoftware:material-intro:2.0.0'
     implementation 'com.github.clans:fab:1.6.4'
     implementation 'com.github.prolificinteractive:material-calendarview:2.0.1'
@@ -62,11 +66,9 @@ dependencies {
     implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.4'
     implementation "com.android.support:design:30.0.0"
     implementation'com.hbb20:ccp:2.3.1'
-    implementation 'com.ismaeldivita.chipnavigation:chip-navigation-bar:1.3.4'
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
     implementation'com.nineoldandroids:library:2.4.0'
-    implementation 'com.github.blackfizz:eazegraph:1.2.5l@aar'
-    implementation 'com.ogaclejapan.smarttablayout:utils-v4:2.0.0@aar'
-    implementation 'com.ogaclejapan.smarttablayout:library:2.0.0@aar'
+    implementation 'com.github.blackfizz:eazegraph:1.2.2@aar'
 
 }
 apply plugin: 'com.google.gms.google-services'

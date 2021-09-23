@@ -9,6 +9,7 @@ import com.google.firebase.database.Exclude;
  */
 public class Usuario {
     private String idUsuario;
+    private String currency;
     private String nome;
     private String email;
     private String senha;
@@ -23,6 +24,14 @@ public class Usuario {
         firebase.child("usuarios")
                 .child( this.idUsuario )
                 .setValue( this );
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 
     public Double getReceitaTotal() {

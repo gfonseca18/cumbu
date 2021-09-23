@@ -17,6 +17,7 @@ public class Movimentacao {
     private String tipo;
     private double valor;
     private String key;
+    private String purl;
 
     public Movimentacao() {
     }
@@ -34,6 +35,14 @@ public class Movimentacao {
                 .push()
                 .setValue(this);
 
+    }
+
+    public String getPurl() {
+        return purl;
+    }
+
+    public void setPurl(String purl) {
+        this.purl = purl;
     }
 
     public String getKey() {
